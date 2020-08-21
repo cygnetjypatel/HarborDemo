@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router'
 ;
 import { BoatComponent } from './boat/boat.component';
 import { ListComponent } from './boat/list/list.component';
+import { AddEditComponent } from './boat/addedit/addedit.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
         component: BoatComponent,
         children:[
           {path: '',  redirectTo: 'list', pathMatch: 'full'},
-          {path: 'list', component: ListComponent}
+          {path: 'list', component: ListComponent},
+          { path: 'add', component: AddEditComponent},
+          { path: 'edit/:id', component: AddEditComponent},
         ]
       }
     ]
