@@ -2,11 +2,11 @@
 
 namespace Harbor.Utility
 {
-    public static class Healper
+    public static class Helper
     {
         #region Public Variables
 
-        public static Random random = new Random();
+        public static Random Random = new Random();
 
         #endregion
 
@@ -15,7 +15,7 @@ namespace Harbor.Utility
         public static T GeRandomValue<T>()
         {
             var enumList = Enum.GetValues(typeof(T));
-            return (T)enumList.GetValue(random.Next(enumList.Length));
+            return (T)enumList.GetValue(Random.Next(enumList.Length));
         }
 
         #endregion

@@ -1,9 +1,11 @@
-using Harbor.Business;
+using Harbor.Business.Boat;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Harbor.WebApi
 {
@@ -27,7 +29,7 @@ namespace Harbor.WebApi
         #endregion
 
         #region Configuration
-
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureDependencyInjection(services);
@@ -67,12 +69,38 @@ namespace Harbor.WebApi
         #endregion
 
         #region configure Envirounmnet
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory )
         {
+
+            // Serilog configuration
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.RollingFile(pathFormat: "logs\\log-{Date}.log")
+                .CreateLogger();
+
             if (env.IsDevelopment())
             {
+                loggerFactory.WithFilter(new FilterLoggerSettings
+                    {
+                        {"Trace",LogLevel.Trace },
+                        {"Default", LogLevel.Trace},
+                        {"Microsoft", LogLevel.Warning},
+                        {"System", LogLevel.Warning}
+                    })
+                    .AddSerilog();
+
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                loggerFactory.WithFilter(new FilterLoggerSettings
+                    {
+                        {"Trace",LogLevel.Trace },
+                        {"Default", LogLevel.Trace},
+                        {"Microsoft", LogLevel.Warning},
+                        {"System", LogLevel.Warning}
+                    })
+                    .AddSerilog();
             }
 
             app.UseSwagger();

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using static Harbor.Model.Enums;
+﻿using Harbor.Model.Constants;
 
-namespace Harbor.Model
+namespace Harbor.Model.Boat
 {
-    public class Boat
+    public class BoatModal
     {
-        public Boat()
+        public BoatModal()
         {
             this.BoatStatus = StatusTypes.InQueue;
         }

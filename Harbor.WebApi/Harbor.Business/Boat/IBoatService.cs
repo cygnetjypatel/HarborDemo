@@ -1,12 +1,15 @@
-﻿using Harbor.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Harbor.Model.Boat;
 
-namespace Harbor.Business
+namespace Harbor.Business.Boat
 {
     public interface IBoatService
     {
-        IList<Boat> GenerateBots(int boatsToBeGenerated);
+        /// <summary>
+        /// Generate Boats
+        /// </summary>
+        /// <param name="boatsToBeGenerated"> Total Boats want to generate</param>
+        /// <returns></returns>
+        public IList<BoatModal> GenerateBoats(int boatsToBeGenerated);
     }
 }

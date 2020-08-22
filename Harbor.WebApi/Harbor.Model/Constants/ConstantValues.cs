@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Harbor.Model
+namespace Harbor.Model.Constants
 {
-    public static class Constants
+    public static class ConstantValues
     {
         public const int SpeedBoatSpeed = 30;
         public const int SailBoatSpeed = 15;
