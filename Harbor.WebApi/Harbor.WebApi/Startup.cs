@@ -1,3 +1,4 @@
+using Harbor.Business;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,12 +30,23 @@ namespace Harbor.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureDependencyInjection(services);
             ConfigureCors(services);
             services.AddControllers();
             services.AddSwaggerGen();
         }
 
         #endregion
+
+        #region Configure DependencyInjection
+
+        private void ConfigureDependencyInjection(IServiceCollection services)
+        {
+            services.AddTransient<IBoatService, BoatService>();
+        }
+
+        #endregion
+
 
         #region Configure CORS
 

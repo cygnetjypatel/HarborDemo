@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Harbor.Model\Harbor.Model.csproj" />
+    <ProjectReference Include="..\Harbor.Utility\Harbor.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

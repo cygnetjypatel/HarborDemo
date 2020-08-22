@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Harbor.Business;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Harbor.WebApi.Controllers
@@ -11,24 +7,30 @@ namespace Harbor.WebApi.Controllers
     [ApiController]
     public class BoatController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-{
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+
+        #region Private Variables     
+
+        private readonly IBoatService _boatService;
+
+        #endregion
+
+        #region Constructor
+
+        public BoatController(IBoatService boatService)
+        {
+            _boatService = boatService;
+        }
+
+        #endregion
+
+        #region Public Methods
 
         [HttpGet("[action]")]
-        public IActionResult GetData()
+        public IActionResult GenerateBoats(int boatsToBeGenerated)
         {
-            var rng = new Random();
-            var a = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
-
-            return Ok(a);
+            return Ok(_boatService.GenerateBots(boatsToBeGenerated));
         }
+
+        #endregion
     }
 }

@@ -1,4 +1,6 @@
+//#region Angular Import
 import { Component, OnInit } from '@angular/core';
+//#endregion
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  //#region Constructor
+
   constructor() { }
 
-  ngOnInit(): void {
+  //#endregion
+
+  //#region Angular Events
+
+  public ngOnInit(): void {
   }
+
+  //#endregion
 
 }

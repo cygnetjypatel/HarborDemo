@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+
+import { WindService } from './Services/wind/wind.service';
+import { HeaderComponent } from './components/header/header.component';
+import { BoatService } from './Services/boat/boat.service';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   providers: [
-
+    WindService,
+    BoatService
   ]
 })
+
+
 export class SharedModule { }

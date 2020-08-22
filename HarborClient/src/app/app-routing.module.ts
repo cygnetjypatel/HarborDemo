@@ -1,6 +1,11 @@
+//#region Angular Imports
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+//#endregion
+
+//#region Harbor Imports
 import { AppComponent } from './app.component';
+//#endregion
 
 
 const routes: Routes = [
@@ -8,12 +13,14 @@ const routes: Routes = [
     path: '',
     component: AppComponent,
     children:[
+      {path: '', redirectTo: 'harborControl', pathMatch: 'full'},
       {
-        path: 'poart',
+        path: 'harborControl',
         loadChildren: () =>
-          import(`./port/port.module`).then((m) => m.PortModule),
+          import(`./harborControl/harborcontrol.module`).then((m) => m.HarborcontrolModule),
       }
     ],
+    
   }
 ];
 
