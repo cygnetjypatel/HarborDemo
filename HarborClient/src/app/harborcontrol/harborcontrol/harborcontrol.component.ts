@@ -42,7 +42,7 @@ export class HarborControlComponent implements OnInit {
     this.windService.getWindData().subscribe(res => {
       this.windSpeed = +parseFloat(String((res['wind']['speed'] * 18) / 5)).toFixed(2)
     }, error => {
-      alert('Error while getting the wind data.')
+      alert('Error while getting the wind data.');
     });
   }
 
@@ -94,7 +94,7 @@ export class HarborControlComponent implements OnInit {
       case StatusTypes.Completed:
         return 'Completed';
       case StatusTypes.CannotProcess:
-        return 'You Can not enter in perimeter.';
+        return 'You can not enter in perimeter.';
     }
   }
   //#endregion
@@ -106,8 +106,9 @@ export class HarborControlComponent implements OnInit {
     let boat = this.boatList.find(x => x.boatStatus === StatusTypes.InQueue);
     if (boat.boatType === BoatTypes.SailBoat && (this.windSpeed < 10 || this.windSpeed > 30)) {
       boat.boatStatus = StatusTypes.CannotProcess;
+      this.processBoats();
     } else {
-      boat.boatStatus = StatusTypes.InProgress
+      boat.boatStatus = StatusTypes.InProgress;
       setTimeout(() => {
         boat.boatStatus = StatusTypes.Completed;
         if (this.boatList.some(x => x.boatStatus === StatusTypes.InQueue)) {
