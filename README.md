@@ -7,7 +7,7 @@ This project has two sub Projects
   - It is developed using .net core 3.1 framework
   
 2) HarboarClient
-  - This project is a front end side project.
+  - This project is a front-end side project.
   - This project is developed using angular 9
   - I have used bootstrap 4 for css and font-awesome for icons.
   
