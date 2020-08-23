@@ -7,9 +7,9 @@ This project has two sub Projects
   - It is developed using .net core 3.1 framework
   
 2) HarboarClient
-  - This project is font side project.
-  - Which is developed in angular 9
-  - In this I have used Bootstrp 4 for css and font-awesome for icons
+  - This project is a font end side project.
+  - This project is developed using angular 9
+  - I have used bootstrap 4 for css and font-awesome for icons.
   
 
 Steps to run this project
